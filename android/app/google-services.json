@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "709855254610",
+    "project_id": "bakemesmile-f6eb1",
+    "storage_bucket": "bakemesmile-f6eb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709855254610:android:07ddbcb6a7a7992e11e78b",
+        "android_client_info": {
+          "package_name": "com.sirada.sirawipa.bakemesmile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709855254610-shpo10f28mab9rm8limikitq8imolcou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVu9gk0LetgNEEmAN74N5KfNp0LlWnEZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709855254610-shpo10f28mab9rm8limikitq8imolcou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

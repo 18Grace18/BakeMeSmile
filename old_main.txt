@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:bakemesmile/common/theme.dart';
+import 'package:bakemesmile/models/recipes.dart';
+import 'package:bakemesmile/models/favorite.dart';
+import 'package:bakemesmile/screens/recipes_list.dart';
+import 'package:bakemesmile/screens/favorite_list.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Using MultiProvider is convenient when providing multiple objects.
+    return MultiProvider(
+      providers: [
+        // In this sample app, CatalogModel never changes, so a simple Provider
+        // is sufficient.
+        Provider(create: (context) => RecipeModel()),
+        // CartModel is implemented as a ChangeNotifier, which calls for the use
+        // of ChangeNotifierProvider. Moreover, CartModel depends
+        // on CatalogModel, so a ProxyProvider is needed.
+        ChangeNotifierProxyProvider<RecipeModel, FavoriteListModel>(
+          create: (context) => FavoriteListModel(),
+          update: (context, recipe, favorite) {
+            if (favorite == null) throw ArgumentError.notNull('favorite');
+            favorite.favorite = recipe;
+            return favorite;
+          },
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Provider Cake',
+        theme: appTheme,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const RecipeList(),
+          '/favorite': (context) => const MyFavorite(),
+        },
+      ),
+    );
+  }
+}
